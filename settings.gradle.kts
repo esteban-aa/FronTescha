@@ -21,4 +21,3 @@ dependencyResolutionManagement {
 
 rootProject.name = "TESCHAChatbot-F"
 include(":app")
- 
