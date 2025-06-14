@@ -20,6 +20,7 @@ public class LoginActivity extends AppCompatActivity {
 
     Spinner rolSpinner;
     EditText inputField;
+    EditText passwordInput;
     Button loginButton;
     TextView registerText;
 
@@ -28,28 +29,31 @@ public class LoginActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.login); //
+        setContentView(R.layout.login); // Asegúrate de que tu archivo login.xml tenga este nombre
 
+        // Referencias a elementos del layout
         rolSpinner = findViewById(R.id.rolSpinner);
         inputField = findViewById(R.id.emailOrMatriculaInput);
+        passwordInput = findViewById(R.id.passwordInput);
         loginButton = findViewById(R.id.loginButton);
         registerText = findViewById(R.id.registerText);
 
+        // Inicializar SharedPreferences
         sharedPreferences = getSharedPreferences("sesion", Context.MODE_PRIVATE);
 
-        // Si ya hay sesión guardada, redirige a otra actividad
+        // Si ya hay sesión guardada, redirigir a HomeActivity
         if (sharedPreferences.getBoolean("logeado", false)) {
             startActivity(new Intent(LoginActivity.this, HomeActivity.class));
             finish();
         }
 
-
+        // Llenar el Spinner con los roles
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,
                 R.array.roles_array, android.R.layout.simple_spinner_item);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         rolSpinner.setAdapter(adapter);
 
-
+        // Cambiar el hint dependiendo del rol
         rolSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
@@ -69,16 +73,17 @@ public class LoginActivity extends AppCompatActivity {
             }
         });
 
-        // Acción del texto registrarse
+        // Acción del texto "¿No tienes cuenta? Regístrate"
         registerText.setOnClickListener(v -> {
-            // Aquí puedes abrir la actividad de registro
-            Toast.makeText(this, "Función para registrarse próximamente", Toast.LENGTH_SHORT).show();
+            Intent intent = new Intent(LoginActivity.this, RegisterActivity.class);
+            startActivity(intent);
         });
 
-        // Acción del botón login
+        // Acción del botón "INICIAR SESIÓN"
         loginButton.setOnClickListener(v -> {
             String rol = rolSpinner.getSelectedItem().toString();
             String input = inputField.getText().toString().trim();
+            String password = passwordInput.getText().toString().trim();
 
             if (input.isEmpty()) {
                 inputField.setError("Por favor ingresa " + (rol.equals("Usuario") ? "tu correo" : "tu matrícula"));
@@ -86,22 +91,22 @@ public class LoginActivity extends AppCompatActivity {
                 return;
             }
 
-
-            if (!input.isEmpty()) {
-                SharedPreferences.Editor editor = sharedPreferences.edit();
-                editor.putBoolean("logeado", true);
-                editor.putString("rol", rol);
-                editor.putString("usuario", input);
-                editor.apply();
-
-                Toast.makeText(LoginActivity.this, "Sesión iniciada como " + rol, Toast.LENGTH_SHORT).show();
-                startActivity(new Intent(LoginActivity.this, HomeActivity.class));
-                finish();
-            } else {
-                inputField.setError("Este campo no puede estar vacío");
-                inputField.requestFocus();
+            if (password.isEmpty()) {
+                passwordInput.setError("Por favor ingresa tu contraseña");
+                passwordInput.requestFocus();
+                return;
             }
 
+            // Simulación de login (aquí podrías consultar tu base de datos o servidor)
+            SharedPreferences.Editor editor = sharedPreferences.edit();
+            editor.putBoolean("logeado", true);
+            editor.putString("rol", rol);
+            editor.putString("usuario", input);
+            editor.apply();
+
+            Toast.makeText(LoginActivity.this, "Sesión iniciada como " + rol, Toast.LENGTH_SHORT).show();
+            startActivity(new Intent(LoginActivity.this, HomeActivity.class));
+            finish();
         });
     }
 }

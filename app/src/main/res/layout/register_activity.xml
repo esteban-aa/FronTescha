@@ -20,25 +20,25 @@
             android:layout_marginBottom="32dp" />
 
         <TextView
-            android:id="@+id/loginTitle"
+            android:id="@+id/registerTitle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Iniciar Sesión"
+            android:text="Regístrate"
             android:textSize="32sp"
             android:textStyle="bold"
             android:textColor="#FF5722"
             android:layout_marginBottom="12dp" />
 
         <TextView
-            android:id="@+id/welcomeMessage"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="¡Bienvenido! Ingresa tus datos para continuar"
+            android:text="Crea una cuenta nueva para acceder"
             android:textSize="16sp"
             android:textColor="#B0B0B0"
             android:layout_marginBottom="32dp"
             android:textAlignment="center" />
 
+        <!-- Spinner para seleccionar el rol -->
         <Spinner
             android:id="@+id/rolSpinner"
             android:layout_width="match_parent"
@@ -46,23 +46,22 @@
             android:backgroundTint="#FF5722"
             android:popupBackground="#333333"
             android:padding="12dp"
-            android:layout_marginBottom="24dp"
+            android:layout_marginBottom="32dp"
             android:spinnerMode="dropdown" />
 
+        <!-- Campo dinámico: correo o matrícula -->
         <EditText
             android:id="@+id/emailOrMatriculaInput"
             android:layout_width="match_parent"
             android:layout_height="48dp"
-            android:hint="Correo electrónico o Matrícula"
+            android:hint="Correo electrónico"
             android:textColor="#FFFFFF"
             android:textColorHint="#AAAAAA"
             android:backgroundTint="#FF5722"
             android:inputType="textEmailAddress"
             android:padding="12dp"
-            android:layout_marginBottom="16dp"
-            android:importantForAutofill="no" />
+            android:layout_marginBottom="24dp" />
 
-        <!-- ✅ Campo de contraseña -->
         <EditText
             android:id="@+id/passwordInput"
             android:layout_width="match_parent"
@@ -73,41 +72,40 @@
             android:backgroundTint="#FF5722"
             android:inputType="textPassword"
             android:padding="12dp"
+            android:layout_marginBottom="24dp" />
+
+        <EditText
+            android:id="@+id/confirmPasswordInput"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:hint="Confirmar contraseña"
+            android:textColor="#FFFFFF"
+            android:textColorHint="#AAAAAA"
+            android:backgroundTint="#FF5722"
+            android:inputType="textPassword"
+            android:padding="12dp"
             android:layout_marginBottom="32dp" />
 
         <Button
-            android:id="@+id/loginButton"
+            android:id="@+id/registerButton"
             android:layout_width="match_parent"
             android:layout_height="48dp"
-            android:text="INICIAR SESIÓN"
+            android:text="REGISTRARSE"
             android:textAllCaps="true"
             android:textColor="#FFFFFF"
             android:backgroundTint="#FF5722"
             android:textStyle="bold"
-            android:layout_marginBottom="24dp" />
+            android:layout_marginBottom="16dp" />
 
         <TextView
-            android:id="@+id/registerText"
+            android:id="@+id/goToLoginText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="¿No tienes cuenta? Regístrate"
-            android:textColor="#ff5733"
+            android:text="¿Ya tienes cuenta? Inicia sesión"
+            android:textColor="#FF5733"
             android:textSize="14sp"
-            android:layout_marginTop="16dp"
-            android:clickable="true"
-            android:focusable="true" />
-
-        <TextView
-            android:id="@+id/forgotPassword"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="¿Olvidaste tu contraseña?"
-            android:textColor="#AAAAAA"
-            android:textSize="14sp"
-            android:layout_marginTop="16dp"
             android:clickable="true"
             android:focusable="true" />
 
     </LinearLayout>
-
 </ScrollView>
