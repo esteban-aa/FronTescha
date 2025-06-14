@@ -1,4 +1,4 @@
-package com.example.teschachatbot_f.network;
+/*package com.example.teschachatbot_f.network;
 
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
@@ -13,7 +13,7 @@ public class RetrofitClient {
     private static final String BASE_URL = "http://10.0.2.2:5001/"; // Cambia esto según tu caso
 
     private static RetrofitClient instance;
-    private ApiService apiService;
+    //private ApiService apiService;
 
     private RetrofitClient() {
         // Opcional: Interceptor para ver los logs HTTP en Logcat
@@ -43,4 +43,4 @@ public class RetrofitClient {
     public ApiService getApiService() {
         return apiService;
     }
-}
+}*/

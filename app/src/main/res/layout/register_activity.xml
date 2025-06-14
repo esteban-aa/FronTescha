@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#121212">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:gravity="center"
+        android:padding="32dp">
+
+        <ImageView
+            android:id="@+id/logoImage"
+            android:layout_width="180dp"
+            android:layout_height="180dp"
+            android:src="@drawable/logotescha"
+            android:contentDescription="Logo de TESCHA"
+            android:layout_marginBottom="32dp" />
+
+        <TextView
+            android:id="@+id/registerTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Regístrate"
+            android:textSize="32sp"
+            android:textStyle="bold"
+            android:textColor="#FF5722"
+            android:layout_marginBottom="12dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Crea una cuenta nueva para acceder"
+            android:textSize="16sp"
+            android:textColor="#B0B0B0"
+            android:layout_marginBottom="32dp"
+            android:textAlignment="center" />
+
+        <!-- Spinner para seleccionar el rol -->
+        <Spinner
+            android:id="@+id/rolSpinner"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:backgroundTint="#FF5722"
+            android:popupBackground="#333333"
+            android:padding="12dp"
+            android:layout_marginBottom="32dp"
+            android:spinnerMode="dropdown" />
+
+        <!-- Campo dinámico: correo o matrícula -->
+        <EditText
+            android:id="@+id/emailOrMatriculaInput"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:hint="Correo electrónico"
+            android:textColor="#FFFFFF"
+            android:textColorHint="#AAAAAA"
+            android:backgroundTint="#FF5722"
+            android:inputType="textEmailAddress"
+            android:padding="12dp"
+            android:layout_marginBottom="24dp" />
+
+        <EditText
+            android:id="@+id/passwordInput"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:hint="Contraseña"
+            android:textColor="#FFFFFF"
+            android:textColorHint="#AAAAAA"
+            android:backgroundTint="#FF5722"
+            android:inputType="textPassword"
+            android:padding="12dp"
+            android:layout_marginBottom="24dp" />
+
+        <EditText
+            android:id="@+id/confirmPasswordInput"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:hint="Confirmar contraseña"
+            android:textColor="#FFFFFF"
+            android:textColorHint="#AAAAAA"
+            android:backgroundTint="#FF5722"
+            android:inputType="textPassword"
+            android:padding="12dp"
+            android:layout_marginBottom="32dp" />
+
+        <Button
+            android:id="@+id/registerButton"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:text="REGISTRARSE"
+            android:textAllCaps="true"
+            android:textColor="#FFFFFF"
+            android:backgroundTint="#FF5722"
+            android:textStyle="bold"
+            android:layout_marginBottom="16dp" />
+
+        <TextView
+            android:id="@+id/goToLoginText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="¿Ya tienes cuenta? Inicia sesión"
+            android:textColor="#FF5733"
+            android:textSize="14sp"
+            android:clickable="true"
+            android:focusable="true" />
+
+    </LinearLayout>
+</ScrollView>
