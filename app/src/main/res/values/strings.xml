@@ -3,5 +3,6 @@
     <string-array name="roles_array">
         <item>Estudiante</item>
         <item>Usuario</item>
+        <item>Administrador</item>
     </string-array>
 </resources>

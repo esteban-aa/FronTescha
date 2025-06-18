@@ -28,6 +28,9 @@
             </intent-filter>
         </activity>
 
+        <!-- Nueva actividad para lectura de archivos -->
+        <activity android:name=".ReadFileActivity" />
+
     </application>
 
 </manifest>

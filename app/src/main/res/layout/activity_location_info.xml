@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="#121212"
+    android:padding="16dp">
+
+    <!-- Contenedor para el mapa (más adelante se reemplazará con MapFragment o MapView) -->
+    <FrameLayout
+        android:id="@+id/mapContainer"
+        android:layout_width="match_parent"
+        android:layout_height="250dp"
+        android:background="#2E2E2E"
+        android:layout_marginBottom="16dp" />
+
+    <!-- Información de la zona -->
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Nombre de la Zona"
+        android:textColor="#FFFFFF"
+        android:textSize="16sp"
+        android:layout_marginTop="8dp" />
+
+    <EditText
+        android:id="@+id/etNombreZona"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Ej. Edificio A"
+        android:background="@drawable/edittext_background"
+        android:textColor="#FFFFFF"
+        android:textColorHint="#AAAAAA"
+        android:padding="12dp"
+        android:layout_marginBottom="12dp"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Descripción o Información adicional"
+        android:textColor="#FFFFFF"
+        android:textSize="16sp" />
+
+    <EditText
+        android:id="@+id/etDescripcion"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:gravity="top"
+        android:background="@drawable/edittext_background"
+        android:textColor="#FFFFFF"
+        android:textColorHint="#AAAAAA"
+        android:hint="Ej. Ubicado cerca del laboratorio de redes"
+        android:padding="12dp"
+        android:layout_marginBottom="12dp" />
+
+    <Button
+        android:id="@+id/btnGuardarZona"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Guardar Información"
+        android:backgroundTint="#00C853"
+        android:textColor="#FFFFFF"
+        android:layout_marginTop="16dp" />
+</LinearLayout>
