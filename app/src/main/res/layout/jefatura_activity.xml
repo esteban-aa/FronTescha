@@ -1,0 +1,237 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:gravity="center"
+        android:padding="32dp"
+        android:background="#000000">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Horarios de Jefaturas de Carrera"
+            android:textSize="22sp"
+            android:textStyle="bold"
+            android:textColor="#FFFFFF"
+            android:layout_marginTop="32dp"
+            android:layout_marginBottom="16dp"
+            android:gravity="center_horizontal"/>
+
+        <TableLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:stretchColumns="*"
+            android:background="#333333"
+            android:padding="8dp">
+
+            <TableRow
+                android:background="#FF5722"
+                android:padding="8dp">
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="CARRERA"
+                    android:textColor="#FFFFFF"
+                    android:textStyle="bold"
+                    android:gravity="center"
+                    android:padding="4dp"/>
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="HORARIO"
+                    android:textColor="#FFFFFF"
+                    android:textStyle="bold"
+                    android:gravity="center"
+                    android:padding="4dp"/>
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="UBICACION"
+                    android:textColor="#FFFFFF"
+                    android:textStyle="bold"
+                    android:gravity="center"
+                    android:padding="4dp"/>
+            </TableRow>
+
+            <TableRow
+                android:background="#444444"
+                android:padding="8dp">
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="ING. SISTEMAS COMPUTACIONALES"
+                    android:textColor="#FFFFFF"
+                    android:gravity="center"
+                    android:padding="4dp"/>
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="9:00 AM A 6:00 PM"
+                    android:textColor="#FFFFFF"
+                    android:gravity="center"
+                    android:padding="4dp"/>
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="EDIFICIO BICENTENARIO"
+                    android:textColor="#FFFFFF"
+                    android:gravity="center"
+                    android:padding="4dp"/>
+            </TableRow>
+
+            <TableRow
+                android:background="#555555"
+                android:padding="8dp">
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="ING. INFORMATICA"
+                    android:textColor="#FFFFFF"
+                    android:gravity="center"
+                    android:padding="4dp"/>
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="9:00 AM A 6:00 PM"
+                    android:textColor="#FFFFFF"
+                    android:gravity="center"
+                    android:padding="4dp"/>
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="EDIFICIO BICENTENARIO"
+                    android:textColor="#FFFFFF"
+                    android:gravity="center"
+                    android:padding="4dp"/>
+            </TableRow>
+
+            <TableRow
+                android:background="#444444"
+                android:padding="8dp">
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="ING. ADMINISTRACIÓN"
+                    android:textColor="#FFFFFF"
+                    android:gravity="center"
+                    android:padding="4dp"/>
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="9:00 AM A 6:00 PM"
+                    android:textColor="#FFFFFF"
+                    android:gravity="center"
+                    android:padding="4dp"/>
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="EDIFICIO BICENTENARIO"
+                    android:textColor="#FFFFFF"
+                    android:gravity="center"
+                    android:padding="4dp"/>
+            </TableRow>
+
+            <TableRow
+                android:background="#555555"
+                android:padding="8dp">
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="ING. INDUSTRIAL"
+                    android:textColor="#FFFFFF"
+                    android:gravity="center"
+                    android:padding="4dp"/>
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="9:00 AM A 6:00 PM"
+                    android:textColor="#FFFFFF"
+                    android:gravity="center"
+                    android:padding="4dp"/>
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="EDIFICIO BICENTENARIO"
+                    android:textColor="#FFFFFF"
+                    android:gravity="center"
+                    android:padding="4dp"/>
+            </TableRow>
+
+            <TableRow
+                android:background="#444444"
+                android:padding="8dp">
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="ING. ELECTROMECÁNICA"
+                    android:textColor="#FFFFFF"
+                    android:gravity="center"
+                    android:padding="4dp"/>
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="9:00 AM A 6:00 PM"
+                    android:textColor="#FFFFFF"
+                    android:gravity="center"
+                    android:padding="4dp"/>
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="EDIFICIO BICENTENARIO"
+                    android:textColor="#FFFFFF"
+                    android:gravity="center"
+                    android:padding="4dp"/>
+            </TableRow>
+        </TableLayout>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Esta información está sujeta a cambios y debe ser verificada en la Jefatura de Carrera correspondiente."
+            android:textColor="#AAAAAA"
+            android:textSize="14sp"
+            android:layout_marginTop="16dp"
+            android:gravity="center_horizontal"
+            android:paddingStart="16dp"
+            android:paddingEnd="16dp"
+            android:layout_marginBottom="32dp"/>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Ubicación"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:textColor="#FF5722"
+            android:gravity="center_horizontal"
+            android:layout_marginTop="16dp"
+            android:layout_marginBottom="16dp" />
+
+    </LinearLayout>
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
