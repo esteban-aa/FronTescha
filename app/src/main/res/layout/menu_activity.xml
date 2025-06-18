@@ -1,0 +1,277 @@
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#000000">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:gravity="center_horizontal"
+        android:padding="32dp">
+
+        <ImageView
+            android:id="@+id/menuIcon"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:src="@drawable/homed"
+            android:contentDescription="Icono de menú"
+            android:layout_gravity="center"
+            android:layout_marginBottom="8dp" />
+
+        <TextView
+            android:id="@+id/menuTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Menú"
+            android:textSize="28sp"
+            android:textStyle="bold"
+            android:textColor="#FF5722"
+            android:layout_marginBottom="32dp" />
+
+        <Button
+            android:id="@+id/btnMapaInfo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Mapa de ubicaciones e información"
+            android:backgroundTint="#FF5722"
+            android:textColor="#FFFFFF"
+            android:padding="12dp"
+            android:layout_marginBottom="16dp" />
+
+        <Button
+            android:id="@+id/btnControlEscolar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Horarios y ubicaciones de Control Escolar"
+            android:backgroundTint="#FF5722"
+            android:textColor="#FFFFFF"
+            android:padding="12dp"
+            android:layout_marginBottom="16dp" />
+
+        <Button
+            android:id="@+id/btnHorariosDocentes"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Horarios Docentes"
+            android:backgroundTint="#FF5722"
+            android:textColor="#FFFFFF"
+            android:padding="12dp"
+            android:layout_marginBottom="16dp" />
+
+        <Button
+            android:id="@+id/btnJefaturaCarrera"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Horarios y ubicación de Jefatura de Carrera"
+            android:backgroundTint="#FF5722"
+            android:textColor="#FFFFFF"
+            android:padding="12dp"
+            android:layout_marginBottom="32dp" />
+
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Navegación y Ubicaciones"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:textColor="#FFFFFF"
+            android:layout_marginTop="24dp"
+            android:layout_marginBottom="12dp" />
+
+
+
+        <TextView
+            android:id="@+id/currentLocationText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Ubicación Actual: Chalco de Díaz Covarrubias"
+            android:textColor="#AAAAAA"
+            android:textSize="14sp"
+            android:gravity="center_horizontal"
+            android:layout_marginBottom="24dp" />
+
+        <RadioGroup
+            android:id="@+id/radioGroup"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginBottom="16dp">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Elige una opción:"
+                android:textColor="#FFFFFF"
+                android:textSize="16sp"
+                android:layout_marginBottom="8dp"/>
+            <RadioButton
+                android:id="@+id/radioOption1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="ESTUDIANTE"
+                android:textColor="#FFFFFF"
+                android:buttonTint="#FF5722"/>
+            <RadioButton
+                android:id="@+id/radioOption2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="INVITADO"
+                android:textColor="#FFFFFF"
+                android:buttonTint="#FF5722"/>
+        </RadioGroup>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Contacto Jefaturas"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:textColor="#FFFFFF"
+            android:layout_marginTop="24dp"
+            android:layout_marginBottom="12dp" />
+
+        <TextView
+            android:id="@+id/jefaturaContactInfo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Información de contacto: [Email/Teléfono aquí]"
+            android:textColor="#FFFFFF"
+            android:textSize="16sp"
+            android:gravity="center_horizontal"
+            android:layout_marginBottom="16dp" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="¡Recuerda revisar la tabla de horarios de Jefaturas arriba!"
+            android:textColor="#AAAAAA"
+            android:textSize="14sp"
+            android:gravity="center_horizontal"
+            android:layout_marginBottom="32dp" />
+
+        <RatingBar
+            android:id="@+id/ratingBar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:numStars="5"
+            android:stepSize="0.5"
+            android:rating="3.5"
+            android:progressTint="#FF5722"
+            android:secondaryProgressTint="#FF5722"
+            android:layout_marginBottom="16dp" />
+
+
+
+        <ToggleButton
+            android:id="@+id/toggleButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textOn="Modo Noche Activado"
+            android:textOff="Modo Noche Desactivado"
+            android:textColor="#FFFFFF"
+            android:backgroundTint="#FF5722"
+            android:layout_marginBottom="16dp" />
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/fabAdd"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="end|bottom"
+            android:src="@android:drawable/ic_input_add"
+            android:backgroundTint="#FF5722"
+            android:tint="#FFFFFF"
+            android:contentDescription="Añadir nuevo elemento"
+            android:layout_marginTop="16dp"
+            android:layout_marginBottom="16dp" />
+
+        <EditText
+            android:id="@+id/multilineEditText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Deja tus comentarios aquí..."
+            android:textColorHint="#AAAAAA"
+            android:textColor="#FFFFFF"
+            android:backgroundTint="#FF5722"
+            android:inputType="textMultiLine"
+            android:lines="3"
+            android:gravity="top|start"
+            android:padding="8dp"
+            android:layout_marginBottom="16dp"/>
+
+
+
+        <ImageView
+            android:id="@+id/infoIcon"
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:src="@android:drawable/ic_dialog_info"
+            android:contentDescription="Icono de información"
+            android:layout_marginBottom="16dp" />
+
+        <Button
+            android:id="@+id/btnCerrarSesion"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Cerrar sesión"
+            android:backgroundTint="#B00020"
+            android:textColor="#FFFFFF"
+            android:padding="12dp" />
+
+        <Switch
+            android:id="@+id/switchModo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Activar modo automático"
+            android:textColor="#FFFFFF"
+            android:thumbTint="#FF5722"
+            android:trackTint="#FF8A65"
+            android:layout_marginBottom="16dp" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Selecciona tus intereses:"
+            android:textColor="#FFFFFF"
+            android:textSize="16sp"
+            android:layout_marginBottom="8dp" />
+
+        <CheckBox
+            android:id="@+id/checkboxNoticias"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Recibir noticias"
+            android:textColor="#FFFFFF"
+            android:buttonTint="#FF5722" />
+
+        <CheckBox
+            android:id="@+id/checkboxEventos"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Recibir eventos"
+            android:textColor="#FFFFFF"
+            android:buttonTint="#FF5722"
+            android:layout_marginBottom="16dp" />
+        <Spinner
+            android:id="@+id/spinnerOpciones"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
+            android:backgroundTint="#FF5722"
+            android:popupBackground="#000000"
+            android:entries="@array/opciones_spinner" />
+        <AutoCompleteTextView
+            android:id="@+id/autoComplete"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Buscar ubicación o edificio"
+            android:textColor="#FFFFFF"
+            android:textColorHint="#AAAAAA"
+            android:backgroundTint="#FF5722"
+            android:inputType="text"
+            android:layout_marginBottom="16dp" />
+
+
+
+    </LinearLayout>
+</ScrollView>

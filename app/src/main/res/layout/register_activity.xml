@@ -85,7 +85,25 @@
             android:inputType="textPassword"
             android:padding="12dp"
             android:layout_marginBottom="32dp" />
+        <Switch
+            android:id="@+id/switchOption"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Habilitar notificaciones"
+            android:textColor="#FFFFFF"
+            android:textSize="18sp"
+            android:thumbTint="#FF5722"
+            android:trackTint="#757575"
+            android:layout_marginBottom="16dp" />
 
+        <CheckBox
+            android:id="@+id/checkBoxAgree"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Aceptar términos y condiciones"
+            android:textColor="#FFFFFF"
+            android:buttonTint="#FF5722"
+            android:layout_marginBottom="16dp" />
         <Button
             android:id="@+id/registerButton"
             android:layout_width="match_parent"
