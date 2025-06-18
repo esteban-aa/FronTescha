@@ -8,5 +8,6 @@ public interface ApiService {
     // Solo una llamada GET simple que no espera cuerpo en la respuesta
     @GET("api/health/test-db")
     Call<Void> testDbConnection();
-
+    @GET("api/file/read-file")
+    Call<String> leerArchivo();
 }

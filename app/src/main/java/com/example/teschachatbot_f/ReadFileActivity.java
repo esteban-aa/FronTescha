@@ -4,8 +4,12 @@ import android.os.Bundle;
 import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
 
-import java.io.FileInputStream;
-import java.io.IOException;
+import com.example.teschachatbot_f.network.ApiService;
+import com.example.teschachatbot_f.network.RetrofitClient;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class ReadFileActivity extends AppCompatActivity {
 
@@ -18,35 +22,24 @@ public class ReadFileActivity extends AppCompatActivity {
 
         textViewContent = findViewById(R.id.textViewContent);
 
-        String filename = "ejemplo.txt"; // Nombre del archivo que leerás
+        ApiService apiService = RetrofitClient.getInstance().create(ApiService.class);
 
-        String content = readFile(filename);
-        if (content != null) {
-            textViewContent.setText(content);
-        } else {
-            textViewContent.setText("No se pudo leer el archivo.");
-        }
-    }
+        Call<String> call = apiService.leerArchivo();
 
-    private String readFile(String filename) {
-        FileInputStream fis = null;
-        try {
-            fis = openFileInput(filename);
-            int size = fis.available();
-            byte[] buffer = new byte[size];
-            fis.read(buffer);
-            return new String(buffer);
-        } catch (IOException e) {
-            e.printStackTrace();
-            return null;
-        } finally {
-            if (fis != null) {
-                try {
-                    fis.close();
-                } catch (IOException e) {
-                    e.printStackTrace();
+        call.enqueue(new Callback<String>() {
+            @Override
+            public void onResponse(Call<String> call, Response<String> response) {
+                if (response.isSuccessful() && response.body() != null) {
+                    textViewContent.setText(response.body());
+                } else {
+                    textViewContent.setText("Error: " + response.code());
                 }
             }
-        }
+
+            @Override
+            public void onFailure(Call<String> call, Throwable t) {
+                textViewContent.setText("Fallo: " + t.getMessage());
+            }
+        });
     }
 }
