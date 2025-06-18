@@ -28,7 +28,6 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
     override fun onMapReady(googleMap: GoogleMap) {
         map = googleMap
 
-        // 🔐 Verificación de permisos
         if (ActivityCompat.checkSelfPermission(
                 this, Manifest.permission.ACCESS_FINE_LOCATION
             ) != PackageManager.PERMISSION_GRANTED &&
@@ -46,15 +45,11 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
 
         map.isMyLocationEnabled = true
 
-        // 📍 Obtenemos datos enviados desde DestinosActivity
-        val nombre = intent.getStringExtra("nombre") ?: "TESCHA"
-        val lat = intent.getDoubleExtra("lat", 19.504384)
-        val lng = intent.getDoubleExtra("lng", -98.879201)
-
-        // 📌 Colocamos el marcador en el lugar correcto
-        val destino = LatLng(lat, lng)
-        map.addMarker(MarkerOptions().position(destino).title(nombre))
-        map.moveCamera(CameraUpdateFactory.newLatLngZoom(destino, 17f))
+        // Posición fija por defecto
+        val tescha = LatLng(19.504384, -98.879201)
+        map.addMarker(MarkerOptions().position(tescha).title("TESCHA"))
+        map.moveCamera(CameraUpdateFactory.newLatLngZoom(tescha, 16f))
     }
 }
+
 

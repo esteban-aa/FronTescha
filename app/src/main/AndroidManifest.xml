@@ -2,7 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
 
-    <!-- 📍 Permisos necesarios para acceder a la ubicación -->
+    <!-- 📍 Permisos necesarios para ubicación y red -->
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
     <uses-permission android:name="android.permission.INTERNET" />
@@ -22,13 +22,15 @@
         <!-- 🔑 API Key de Google Maps -->
         <meta-data
             android:name="com.google.android.geo.API_KEY"
-            android:value="TU_API_KEY_AQUI" /> <!-- Reemplaza esto con tu clave real -->
+            android:value="AIzaSyDqPCODiEx2E4LhvhTvlsbuOnHdOGWK950" />
 
-        <!-- 🎯 Actividades declaradas -->
+        <!-- 🎯 Actividades registradas -->
         <activity android:name=".HomeActivity" />
         <activity android:name=".RegisterActivity" />
         <activity android:name=".DestinosActivity" />
         <activity android:name=".MapsActivity" />
+        <activity android:name=".HorariosDocentesActivity" />
+        <activity android:name=".HorariosControlEscolarActivity" /> <!-- ✅ FALTA REGISTRAR ESTA -->
 
         <!-- 🚀 Pantalla de inicio -->
         <activity
@@ -43,4 +45,5 @@
     </application>
 
 </manifest>
+
 

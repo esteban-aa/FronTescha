@@ -11,17 +11,19 @@ class DestinosActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_destinos)
 
+
+        // 🌍 Mapa de destinos
         val destinos = mapOf(
-            R.id.btnBiblioteca to Pair("Biblioteca", Pair(19.5045, -98.8793)),
-            R.id.btnAuditorio to Pair("Auditorio", Pair(19.5040, -98.8790)),
-            R.id.btnGym to Pair("Gym", Pair(19.5038, -98.8795)),
-            R.id.btnCafeteria to Pair("Cafetería", Pair(19.5042, -98.8791)),
-            R.id.btnCanchas to Pair("Canchas", Pair(19.5043, -98.8797)),
-            R.id.btnSorJuana to Pair("Edificio Sor Juana", Pair(19.5041, -98.8792)),
-            R.id.btnBicentenario to Pair("Edificio Bicentenario", Pair(19.5046, -98.8789)),
-            R.id.btnRevolucion to Pair("Edificio Revolución", Pair(19.5047, -98.8788)),
-            R.id.btnNeza to Pair("Edificio Nezahualcóyotl", Pair(19.5048, -98.8794)),
-            R.id.btnMorelos to Pair("Edificio Morelos", Pair(19.5049, -98.8796))
+            R.id.btnBiblioteca to Pair("Biblioteca", Pair(19.2332447, -98.8424854)),
+            R.id.btnAuditorio to Pair("Auditorio", Pair(19.2334900, -98.8417448)),
+            R.id.btnGym to Pair("Gym", Pair(19.2332757, -98.8401254)),
+            R.id.btnCafeteria to Pair("Cafetería", Pair(19.2333564, -98.8412603)),
+            R.id.btnCanchas to Pair("Canchas", Pair(19.2336799, -98.8399960)),
+            R.id.btnSorJuana to Pair("Edificio Sor Juana", Pair(19.2331431, -98.8419580)),
+            R.id.btnBicentenario to Pair("Edificio Bicentenario", Pair(19.2328927, -98.8412992)),
+            R.id.btnRevolucion to Pair("Edificio Revolución", Pair(19.2337803, -98.8413421)),
+            R.id.btnNeza to Pair("Edificio Nezahualcóyotl", Pair(19.2333707, -98.8404751)),
+            R.id.btnMorelos to Pair("Edificio Morelos", Pair(19.2324732, -98.8408224))
         )
 
         destinos.forEach { (btnId, data) ->
