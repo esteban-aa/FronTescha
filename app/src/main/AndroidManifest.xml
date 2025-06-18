@@ -2,9 +2,6 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
 
-    <!-- 📍 Permisos necesarios para ubicación y red -->
-    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
-    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
     <uses-permission android:name="android.permission.INTERNET" />
 
     <application
@@ -19,20 +16,9 @@
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
 
-        <!-- 🔑 API Key de Google Maps -->
-        <meta-data
-            android:name="com.google.android.geo.API_KEY"
-            android:value="AIzaSyDqPCODiEx2E4LhvhTvlsbuOnHdOGWK950" />
-
-        <!-- 🎯 Actividades registradas -->
         <activity android:name=".HomeActivity" />
         <activity android:name=".RegisterActivity" />
-        <activity android:name=".DestinosActivity" />
-        <activity android:name=".MapsActivity" />
-        <activity android:name=".HorariosDocentesActivity" />
-        <activity android:name=".HorariosControlEscolarActivity" /> <!-- ✅ FALTA REGISTRAR ESTA -->
 
-        <!-- 🚀 Pantalla de inicio -->
         <activity
             android:name=".LoginActivity"
             android:exported="true">
@@ -42,11 +28,6 @@
             </intent-filter>
         </activity>
 
-        <!-- Nueva actividad para lectura de archivos -->
-        <activity android:name=".ReadFileActivity" />
-
     </application>
 
 </manifest>
-
-
