@@ -38,6 +38,7 @@ public class olvidasteActivity extends AppCompatActivity {
         );
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         rolSpinner.setAdapter(adapter);
+        
 
         // Lógica del botón para "Consultar Contraseña"
         btnConsultar.setOnClickListener(new View.OnClickListener() {

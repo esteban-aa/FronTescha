@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="#121212"
+    android:padding="16dp">
+
+    <!-- Contenedor para el mapa -->
+    <fragment
+        android:id="@+id/mapFragment"
+        android:name="com.google.android.gms.maps.SupportMapFragment"
+        android:layout_width="match_parent"
+        android:layout_height="250dp"
+        android:layout_marginBottom="16dp" />
+
+    <!-- Texto Nombre (Solo para usuario, visible al inicio) -->
+    <TextView
+        android:id="@+id/tvNombreZona"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColor="#FFFFFF"
+        android:textSize="18sp"
+        android:padding="12dp"
+        android:layout_marginBottom="12dp" />
+
+    <!-- EditText Nombre (Solo para admin, oculto al inicio) -->
+    <EditText
+        android:id="@+id/etNombreZona"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColor="#FFFFFF"
+        android:textSize="18sp"
+        android:padding="12dp"
+        android:layout_marginBottom="12dp"
+        android:visibility="gone"
+        android:background="@android:drawable/edit_text" />
+
+    <!-- Texto Descripción (Solo para usuario, visible al inicio) -->
+    <TextView
+        android:id="@+id/tvDescripcion"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColor="#CCCCCC"
+        android:textSize="16sp"
+        android:padding="12dp" />
+
+    <!-- EditText Descripción (Solo para admin, oculto al inicio) -->
+    <EditText
+        android:id="@+id/etDescripcion"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColor="#CCCCCC"
+        android:textSize="16sp"
+        android:padding="12dp"
+        android:visibility="gone"
+        android:background="@android:drawable/edit_text" />
+
+    <!-- Botón para cambiar a modo edición (Solo admin, visible al inicio) -->
+    <Button
+        android:id="@+id/btnEditar"
+        android:text="Editar información"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:layout_marginBottom="8dp"
+        android:backgroundTint="#4CAF50"
+        android:textColor="#FFFFFF"
+        android:visibility="gone" />
+
+    <!-- Botón para guardar cambios (Solo admin, oculto al inicio) -->
+    <Button
+        android:id="@+id/btnGuardarZona"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Guardar Información"
+        android:backgroundTint="#00C853"
+        android:textColor="#FFFFFF"
+        android:layout_marginTop="8dp"
+        android:visibility="gone" />
+
+</LinearLayout>

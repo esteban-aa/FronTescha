@@ -7,31 +7,33 @@ import androidx.appcompat.app.AppCompatActivity
 
 class DestinosActivity : AppCompatActivity() {
 
+    private lateinit var tipoUsuario: String
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_destinos)
 
+        // Recibir tipo de usuario desde LoginActivity
+        tipoUsuario = intent.getStringExtra("tipoUsuario") ?: "usuario"
 
-        // 🌍 Mapa de destinos
         val destinos = mapOf(
-            R.id.btnBiblioteca to Pair("Biblioteca", Pair(19.2332447, -98.8424854)),
-            R.id.btnAuditorio to Pair("Auditorio", Pair(19.2334900, -98.8417448)),
-            R.id.btnGym to Pair("Gym", Pair(19.2332757, -98.8401254)),
-            R.id.btnCafeteria to Pair("Cafetería", Pair(19.2333564, -98.8412603)),
-            R.id.btnCanchas to Pair("Canchas", Pair(19.2336799, -98.8399960)),
-            R.id.btnSorJuana to Pair("Edificio Sor Juana", Pair(19.2331431, -98.8419580)),
-            R.id.btnBicentenario to Pair("Edificio Bicentenario", Pair(19.2328927, -98.8412992)),
-            R.id.btnRevolucion to Pair("Edificio Revolución", Pair(19.2337803, -98.8413421)),
-            R.id.btnNeza to Pair("Edificio Nezahualcóyotl", Pair(19.2333707, -98.8404751)),
-            R.id.btnMorelos to Pair("Edificio Morelos", Pair(19.2324732, -98.8408224))
+            R.id.btnBiblioteca to "Biblioteca",
+            R.id.btnAuditorio to "Auditorio Principal",
+            R.id.btnGym to "Gymnasio",
+            R.id.btnCafeteria to "Cafetería",
+            R.id.btnCanchas to "Canchas",
+            R.id.btnSorJuana to "Sor Juana",
+            R.id.btnBicentenario to "Bicentenario",
+            R.id.btnRevolucion to "Revolución",
+            R.id.btnNeza to "Nezahualcoyotl",
+            R.id.btnMorelos to "Morelos"
         )
 
-        destinos.forEach { (btnId, data) ->
+        destinos.forEach { (btnId, nombreEdificio) ->
             findViewById<Button>(btnId).setOnClickListener {
-                val intent = Intent(this, MapsActivity::class.java)
-                intent.putExtra("nombre", data.first)
-                intent.putExtra("lat", data.second.first)
-                intent.putExtra("lng", data.second.second)
+                val intent = Intent(this, LocationInfoActivity::class.java)
+                intent.putExtra("nombreEdificio", nombreEdificio)
+                intent.putExtra("tipoUsuario", tipoUsuario) // ← envías el tipo correcto
                 startActivity(intent)
             }
         }

@@ -5,7 +5,6 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.text.InputType;
-import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -23,13 +22,14 @@ public class LoginActivity extends AppCompatActivity {
     EditText passwordInput;
     Button loginButton;
     TextView registerText;
+    TextView forgotPassword;
 
     SharedPreferences sharedPreferences;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.login); // Asegúrate de que tu archivo login.xml tenga este nombre
+        setContentView(R.layout.login); // Asegúrate que este es el layout correcto
 
         // Referencias a elementos del layout
         rolSpinner = findViewById(R.id.rolSpinner);
@@ -37,32 +37,36 @@ public class LoginActivity extends AppCompatActivity {
         passwordInput = findViewById(R.id.passwordInput);
         loginButton = findViewById(R.id.loginButton);
         registerText = findViewById(R.id.registerText);
+        forgotPassword = findViewById(R.id.forgotPassword);
 
         // Inicializar SharedPreferences
         sharedPreferences = getSharedPreferences("sesion", Context.MODE_PRIVATE);
 
-        // Si ya hay sesión guardada, redirigir a HomeActivity
+        // Si ya hay sesión guardada, redirigir a menuActivity
         if (sharedPreferences.getBoolean("logeado", false)) {
-            startActivity(new Intent(LoginActivity.this, HomeActivity.class));
+            startActivity(new Intent(LoginActivity.this, menuActivity.class));
             finish();
         }
 
-        // Llenar el Spinner con los roles
+        // Llenar el Spinner con los roles (asegúrate que roles_array incluye "Administrador")
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,
                 R.array.roles_array, android.R.layout.simple_spinner_item);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         rolSpinner.setAdapter(adapter);
 
-        // Cambiar el hint dependiendo del rol
+        // Cambiar el hint dependiendo del rol seleccionado
         rolSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
-            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+            public void onItemSelected(AdapterView<?> parent, android.view.View view, int position, long id) {
                 String rol = parent.getItemAtPosition(position).toString();
                 if (rol.equals("Usuario")) {
                     inputField.setHint("Correo electrónico");
                     inputField.setInputType(InputType.TYPE_TEXT_VARIATION_EMAIL_ADDRESS);
                 } else if (rol.equals("Estudiante")) {
                     inputField.setHint("Matrícula");
+                    inputField.setInputType(InputType.TYPE_CLASS_TEXT);
+                } else if (rol.equals("Administrador")) {
+                    inputField.setHint("Usuario administrador");
                     inputField.setInputType(InputType.TYPE_CLASS_TEXT);
                 }
             }
@@ -79,6 +83,12 @@ public class LoginActivity extends AppCompatActivity {
             startActivity(intent);
         });
 
+        // Acción del texto "¿Olvidaste tu contraseña?"
+        forgotPassword.setOnClickListener(v -> {
+            Intent intent = new Intent(LoginActivity.this, olvidasteActivity.class);
+            startActivity(intent);
+        });
+
         // Acción del botón "INICIAR SESIÓN"
         loginButton.setOnClickListener(v -> {
             String rol = rolSpinner.getSelectedItem().toString();
@@ -86,7 +96,7 @@ public class LoginActivity extends AppCompatActivity {
             String password = passwordInput.getText().toString().trim();
 
             if (input.isEmpty()) {
-                inputField.setError("Por favor ingresa " + (rol.equals("Usuario") ? "tu correo" : "tu matrícula"));
+                inputField.setError("Por favor ingresa " + (rol.equals("Usuario") ? "tu correo" : (rol.equals("Administrador") ? "tu usuario" : "tu matrícula")));
                 inputField.requestFocus();
                 return;
             }
@@ -97,15 +107,29 @@ public class LoginActivity extends AppCompatActivity {
                 return;
             }
 
-            // Simulación de login (aquí podrías consultar tu base de datos o servidor)
+            // Login especial para administrador
+            if (rol.equals("Administrador") && input.equals("admin") && password.equals("admin123")) {
+                SharedPreferences.Editor editor = sharedPreferences.edit();
+                editor.putBoolean("logeado", true);
+                editor.putString("rol", "administrador");
+                editor.putString("usuario", "Administrador");
+                editor.apply();
+
+                Toast.makeText(LoginActivity.this, "Sesión iniciada como Administrador", Toast.LENGTH_SHORT).show();
+                startActivity(new Intent(LoginActivity.this, menuActivity.class));
+                finish();
+                return;
+            }
+
+            // Login simulado para Usuario y Estudiante (aquí puedes agregar validación real)
             SharedPreferences.Editor editor = sharedPreferences.edit();
             editor.putBoolean("logeado", true);
-            editor.putString("rol", rol);
+            editor.putString("rol", rol.toLowerCase());
             editor.putString("usuario", input);
             editor.apply();
 
             Toast.makeText(LoginActivity.this, "Sesión iniciada como " + rol, Toast.LENGTH_SHORT).show();
-            startActivity(new Intent(LoginActivity.this, HomeActivity.class));
+            startActivity(new Intent(LoginActivity.this, menuActivity.class));
             finish();
         });
     }
