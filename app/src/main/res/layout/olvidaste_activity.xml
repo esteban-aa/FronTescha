@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ScrollView
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#000000">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:gravity="center_horizontal"
+            android:padding="32dp">
+
+            <!-- ¿Olvidaste tu contraseña? -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="¿Olvidaste tu contraseña?"
+                android:textColor="#FFFFFF"
+                android:textSize="22sp"
+                android:textStyle="bold"
+                android:layout_marginBottom="24dp" />
+
+            <!-- Email -->
+            <EditText
+                android:id="@+id/emailInput"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Correo electrónico"
+                android:inputType="textEmailAddress"
+                android:textColor="#FFFFFF"
+                android:textColorHint="#AAAAAA"
+                android:backgroundTint="#FF5722"
+                android:padding="12dp"
+                android:layout_marginBottom="16dp" />
+
+            <!-- Tipo de rol (spinner) -->
+            <Spinner
+                android:id="@+id/rolSpinner"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:backgroundTint="#FF5722"
+                android:popupBackground="#222222"
+                android:layout_marginBottom="24dp" />
+
+            <!-- Botón para consultar contraseña -->
+            <Button
+                android:id="@+id/btnConsultarContrasena"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Consultar Contraseña"
+                android:backgroundTint="#FF5722"
+                android:textColor="#FFFFFF"
+                android:padding="12dp"
+                android:layout_marginBottom="24dp" />
+
+            <!-- Resultado de la contraseña -->
+            <TextView
+                android:id="@+id/resultadoContrasena"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Aquí aparecerá tu contraseña..."
+                android:textColor="#FFFFFF"
+                android:textSize="16sp"
+                android:padding="12dp"
+                android:background="#222222"
+                android:layout_marginBottom="40dp" />
+
+            <!-- ¿Tienes una cuenta? INICIAR SESIÓN -->
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="¿Tienes una cuenta?"
+                    android:textColor="#FFFFFF"
+                    android:textSize="16sp" />
+
+                <TextView
+                    android:id="@+id/linkLogin"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="  INICIAR SESIÓN"
+                    android:textColor="#FF5722"
+                    android:textStyle="bold"
+                    android:textSize="16sp"
+                    android:clickable="true"
+                    android:focusable="true" />
+            </LinearLayout>
+
+        </LinearLayout>
+    </ScrollView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
