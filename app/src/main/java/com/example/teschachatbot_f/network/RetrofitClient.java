@@ -1,7 +1,7 @@
 package com.example.teschachatbot_f.network;
 
 import retrofit2.Retrofit;
-import retrofit2.converter.scalars.ScalarsConverterFactory;
+import retrofit2.converter.gson.GsonConverterFactory;
 
 public class RetrofitClient {
     private static Retrofit retrofit;
@@ -9,8 +9,8 @@ public class RetrofitClient {
     public static Retrofit getInstance() {
         if (retrofit == null) {
             retrofit = new Retrofit.Builder()
-                    .baseUrl("http://192.168.187.9:5000/")// ← Emulador Android usa 10.0.2.2 para localhost
-                    .addConverterFactory(ScalarsConverterFactory.create())
+                    .baseUrl("http://192.168.1.191:5000/") // ← o 10.0.2.2 si usas emulador
+                    .addConverterFactory(GsonConverterFactory.create())
                     .build();
         }
         return retrofit;

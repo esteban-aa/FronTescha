@@ -1,29 +1,49 @@
 package com.example.teschachatbot_f;
 
 import android.os.Bundle;
-import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
+import com.example.teschachatbot_f.models.Edificio;
+import com.example.teschachatbot_f.network.ApiService;
+import com.example.teschachatbot_f.network.RetrofitClient;
+
+import java.util.List;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class ViewLocationActivity extends AppCompatActivity {
 
-    private TextView tvNombreZona, tvDescripcionZona;
+    private RecyclerView rvEdificios;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_view_location);
 
-        tvNombreZona = findViewById(R.id.tvNombreZona);
-        tvDescripcionZona = findViewById(R.id.tvDescripcionZona);
+        rvEdificios = findViewById(R.id.rvEdificios);
+        rvEdificios.setLayoutManager(new LinearLayoutManager(this));
 
-        // Aquí se podrían recibir los datos desde intent o cargar desde la BD
-        String nombre = "Edificio A"; // Simulado
-        String descripcion = "Cerca del laboratorio de redes"; // Simulado
+        ApiService api = RetrofitClient.getInstance().create(ApiService.class);
+        api.getEdificios().enqueue(new Callback<List<Edificio>>() {
+            @Override
+            public void onResponse(Call<List<Edificio>> call, Response<List<Edificio>> response) {
+                if (response.isSuccessful() && response.body() != null) {
+                    rvEdificios.setAdapter(new EdificioAdapter(response.body(), ViewLocationActivity.this));
+                } else {
+                    Toast.makeText(ViewLocationActivity.this, "Error al cargar edificios", Toast.LENGTH_SHORT).show();
+                }
+            }
 
-        tvNombreZona.setText("Zona: " + nombre);
-        tvDescripcionZona.setText("Descripción: " + descripcion);
-
-        // El mapa se carga después cuando se agregue Google Maps
+            @Override
+            public void onFailure(Call<List<Edificio>> call, Throwable t) {
+                Toast.makeText(ViewLocationActivity.this, "Fallo de conexión: " + t.getMessage(), Toast.LENGTH_SHORT).show();
+            }
+        });
     }
 }

@@ -4,32 +4,11 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="#121212"
-    android:padding="16dp">
+    android:padding="16dp"
+    android:background="#ffffff">
 
-    <!-- Contenedor del mapa -->
-    <FrameLayout
-        android:id="@+id/mapContainer"
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rvEdificios"
         android:layout_width="match_parent"
-        android:layout_height="250dp"
-        android:background="#2E2E2E"
-        android:layout_marginBottom="16dp" />
-
-    <!-- Información visible, solo lectura -->
-    <TextView
-        android:id="@+id/tvNombreZona"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Zona: Edificio A"
-        android:textColor="#FFFFFF"
-        android:textSize="18sp"
-        android:layout_marginBottom="8dp" />
-
-    <TextView
-        android:id="@+id/tvDescripcionZona"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Descripción: Cerca del laboratorio de redes"
-        android:textColor="#CCCCCC"
-        android:textSize="16sp" />
+        android:layout_height="match_parent"/>
 </LinearLayout>

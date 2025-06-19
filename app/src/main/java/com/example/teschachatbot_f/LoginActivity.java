@@ -5,7 +5,6 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.text.InputType;
-import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -23,6 +22,7 @@ public class LoginActivity extends AppCompatActivity {
     EditText passwordInput;
     Button loginButton;
     TextView registerText;
+    TextView forgotPassword;
 
     SharedPreferences sharedPreferences;
 
@@ -37,13 +37,14 @@ public class LoginActivity extends AppCompatActivity {
         passwordInput = findViewById(R.id.passwordInput);
         loginButton = findViewById(R.id.loginButton);
         registerText = findViewById(R.id.registerText);
+        forgotPassword = findViewById(R.id.forgotPassword);
 
         // Inicializar SharedPreferences
         sharedPreferences = getSharedPreferences("sesion", Context.MODE_PRIVATE);
 
-        // Si ya hay sesión guardada, redirigir a HomeActivity
+        // Si ya hay sesión guardada, redirigir a menuActivity
         if (sharedPreferences.getBoolean("logeado", false)) {
-            startActivity(new Intent(LoginActivity.this, HomeActivity.class));
+            startActivity(new Intent(LoginActivity.this, menuActivity.class));
             finish();
         }
 
@@ -56,7 +57,7 @@ public class LoginActivity extends AppCompatActivity {
         // Cambiar el hint dependiendo del rol seleccionado
         rolSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
-            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+            public void onItemSelected(AdapterView<?> parent, android.view.View view, int position, long id) {
                 String rol = parent.getItemAtPosition(position).toString();
                 if (rol.equals("Usuario")) {
                     inputField.setHint("Correo electrónico");
@@ -79,6 +80,12 @@ public class LoginActivity extends AppCompatActivity {
         // Acción del texto "¿No tienes cuenta? Regístrate"
         registerText.setOnClickListener(v -> {
             Intent intent = new Intent(LoginActivity.this, RegisterActivity.class);
+            startActivity(intent);
+        });
+
+        // Acción del texto "¿Olvidaste tu contraseña?"
+        forgotPassword.setOnClickListener(v -> {
+            Intent intent = new Intent(LoginActivity.this, olvidasteActivity.class);
             startActivity(intent);
         });
 
@@ -109,7 +116,7 @@ public class LoginActivity extends AppCompatActivity {
                 editor.apply();
 
                 Toast.makeText(LoginActivity.this, "Sesión iniciada como Administrador", Toast.LENGTH_SHORT).show();
-                startActivity(new Intent(LoginActivity.this, HomeActivity.class));
+                startActivity(new Intent(LoginActivity.this, menuActivity.class));
                 finish();
                 return;
             }
@@ -122,7 +129,7 @@ public class LoginActivity extends AppCompatActivity {
             editor.apply();
 
             Toast.makeText(LoginActivity.this, "Sesión iniciada como " + rol, Toast.LENGTH_SHORT).show();
-            startActivity(new Intent(LoginActivity.this, HomeActivity.class));
+            startActivity(new Intent(LoginActivity.this, menuActivity.class));
             finish();
         });
     }

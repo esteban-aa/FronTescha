@@ -22,8 +22,14 @@
             android:name="com.google.android.geo.API_KEY"
             android:value="@string/Maps_key" />
 
-        <activity android:name=".HomeActivity" />
+        <activity android:name=".LocationInfoActivity" />
+        <activity android:name=".menuActivity" />
         <activity android:name=".RegisterActivity" />
+        <activity android:name=".ReadFileActivity" />
+        <activity android:name=".olvidasteActivity" />
+        <activity android:name=".DestinosActivity" />
+
+
 
         <activity
             android:name=".LoginActivity"
@@ -34,9 +40,5 @@
             </intent-filter>
         </activity>
 
-        <!-- Nueva actividad para lectura de archivos -->
-        <activity android:name=".ReadFileActivity" />
-
     </application>
-
 </manifest>
