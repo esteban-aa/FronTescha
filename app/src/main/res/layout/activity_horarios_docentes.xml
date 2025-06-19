@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="16dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <!-- Título -->
+        <TextView
+            android:id="@+id/tvTitulo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Horarios Docentes"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:gravity="center"
+            android:paddingBottom="16dp" />
+
+        <!-- Tabla de horarios -->
+        <TableLayout
+            android:id="@+id/tablaHorarios"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:stretchColumns="*"
+            android:shrinkColumns="*"
+            android:background="#E0E0E0">
+
+            <!-- Fila de encabezado -->
+            <TableRow android:background="#D6D6D6">
+                <TextView
+                    android:text="Profesor o Profesora"
+                    android:padding="8dp"
+                    android:textStyle="bold"/>
+                <TextView
+                    android:text="Horario"
+                    android:padding="8dp"
+                    android:textStyle="bold"/>
+                <TextView
+                    android:text="Ubicacion"
+                    android:padding="8dp"
+                    android:textStyle="bold"/>
+            </TableRow>
+
+            <!-- Fila 1 -->
+            <TableRow>
+                <TextView android:text="Claudia" android:padding="8dp"/>
+                <TextView android:text="7:00 am a 4:00 pm" android:padding="8dp"/>
+                <TextView android:text="Edificio Revolución / Biblioteca" android:padding="8dp"/>
+            </TableRow>
+
+            <!-- Fila 2 -->
+            <TableRow>
+                <TextView android:text="Ivan Azamar" android:padding="8dp"/>
+                <TextView android:text="9:00 am a 9:00 pm" android:padding="8dp"/>
+                <TextView android:text="Edificio Nezahualcóyotl" android:padding="8dp"/>
+            </TableRow>
+
+            <!-- Fila 3 -->
+            <TableRow>
+                <TextView android:text="Leonardo" android:padding="8dp"/>
+                <TextView android:text="12:00 pm a 6:00 pm" android:padding="8dp"/>
+                <TextView android:text="Edificio Sor Juana" android:padding="8dp"/>
+            </TableRow>
+
+            <!-- Fila 4 -->
+            <TableRow>
+                <TextView android:text="Isaias" android:padding="8dp"/>
+                <TextView android:text="1:00 pm a 7:00 pm" android:padding="8dp"/>
+                <TextView android:text="Edificio Bicentenario" android:padding="8dp"/>
+            </TableRow>
+
+            <!-- Fila 5 -->
+            <TableRow>
+                <TextView android:text="Tacubeño" android:padding="8dp"/>
+                <TextView android:text="2:00 pm a 7:00 pm" android:padding="8dp"/>
+                <TextView android:text="Biblioteca" android:padding="8dp"/>
+            </TableRow>
+
+            <!-- Fila 6 -->
+            <TableRow>
+                <TextView android:text="Laduislao" android:padding="8dp"/>
+                <TextView android:text="7:00 am a 2:00 pm" android:padding="8dp"/>
+                <TextView android:text="Edificio Morelos" android:padding="8dp"/>
+            </TableRow>
+        </TableLayout>
+    </LinearLayout>
+</ScrollView>
