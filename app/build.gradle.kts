@@ -1,9 +1,12 @@
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 plugins {
-    id("com.android.application")
-    id("org.jetbrains.kotlin.android") version "1.9.23"
-}
+
+        id("com.android.application")
+        id("org.jetbrains.kotlin.android") version "1.9.23"
+    }
+
+
 
 android {
     namespace = "com.example.teschachatbot_f"
@@ -65,6 +68,7 @@ dependencies {
 
     implementation ("com.google.android.gms:play-services-maps:18.2.0")
     implementation ("com.google.android.gms:play-services-location:21.0.1")
+    implementation(libs.room.common.jvm)
 
     testImplementation("junit:junit:4.13.2")
     androidTestImplementation("androidx.test.ext:junit:1.1.5")

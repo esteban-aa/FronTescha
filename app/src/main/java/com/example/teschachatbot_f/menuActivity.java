@@ -112,12 +112,26 @@ public class menuActivity extends AppCompatActivity {
             startActivity(intent);
         });
 
-        // Puedes agregar más listeners para otros botones si quieres
-        /*
-        btnControlEscolar.setOnClickListener(...);
+
+
+// Enlace a la pantalla de Horarios Docentes
+        btnHorariosDocentes.setOnClickListener(v -> {
+            Intent intent = new Intent(menuActivity.this, HorariosDocentesActivity.class);
+            startActivity(intent);
+        });
+
+// Enlace a la pantalla de Jefatura de Carrera
+        btnJefaturaCarrera.setOnClickListener(v -> {
+            Intent intent = new Intent(menuActivity.this, JefaturaActivity.class);
+            startActivity(intent);
+        });
+
+
+        //Se agregaron los liteners para los botones de:
+        /*btnControlEscolar.setOnClickListener(...);
         btnHorariosDocentes.setOnClickListener(...);
-        btnJefaturaCarrera.setOnClickListener(...);
-        */
+        btnJefaturaCarrera.setOnClickListener(...); *//
+
     }
 
     private void mostrarDialogAgregarUsuario() {
