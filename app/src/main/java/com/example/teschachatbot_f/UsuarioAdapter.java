@@ -40,8 +40,8 @@ public class UsuarioAdapter extends RecyclerView.Adapter<UsuarioAdapter.UsuarioV
     @Override
     public void onBindViewHolder(@NonNull UsuarioViewHolder holder, int position) {
         Usuario usuario = listaUsuarios.get(position);
-        holder.nombreText.setText(usuario.getNombre());
-        holder.correoText.setText(usuario.getCorreo());
+        holder.nombreText.setText(usuario.getIdentificador());
+        holder.correoText.setText(usuario.getIdentificador());
 
         holder.btnEditar.setOnClickListener(v -> listener.onEditarClick(usuario));
         holder.btnEliminar.setOnClickListener(v -> listener.onEliminarClick(usuario));

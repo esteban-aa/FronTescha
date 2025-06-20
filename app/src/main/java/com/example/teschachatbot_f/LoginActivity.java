@@ -14,6 +14,11 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.room.Room;
+
+import com.example.teschachatbot_f.database.AppDatabase;
+import com.example.teschachatbot_f.database.UsuarioDao;
+import com.example.teschachatbot_f.models.Usuario;
 
 public class LoginActivity extends AppCompatActivity {
 
@@ -25,13 +30,14 @@ public class LoginActivity extends AppCompatActivity {
     TextView forgotPassword;
 
     SharedPreferences sharedPreferences;
+    private AppDatabase db;
+    private UsuarioDao usuarioDao;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.login); // Asegúrate que este es el layout correcto
+        setContentView(R.layout.login); // Verifica que sea el layout correcto
 
-        // Referencias a elementos del layout
         rolSpinner = findViewById(R.id.rolSpinner);
         inputField = findViewById(R.id.emailOrMatriculaInput);
         passwordInput = findViewById(R.id.passwordInput);
@@ -39,22 +45,28 @@ public class LoginActivity extends AppCompatActivity {
         registerText = findViewById(R.id.registerText);
         forgotPassword = findViewById(R.id.forgotPassword);
 
-        // Inicializar SharedPreferences
         sharedPreferences = getSharedPreferences("sesion", Context.MODE_PRIVATE);
 
-        // Si ya hay sesión guardada, redirigir a menuActivity
-        if (sharedPreferences.getBoolean("logeado", false)) {
-            startActivity(new Intent(LoginActivity.this, menuActivity.class));
-            finish();
+        // Inicializar base de datos
+        db = Room.databaseBuilder(getApplicationContext(), AppDatabase.class, "tescha-db")
+                .fallbackToDestructiveMigration()
+                .allowMainThreadQueries()  // Para pruebas, en producción usa async
+                .build();
+        usuarioDao = db.usuarioDao();
+
+        // Si ya hay sesión iniciada, ir directo al menú
+        Usuario adminExistente = usuarioDao.buscarPorIdentificador("admin@tescha.com");
+        if (adminExistente == null) {
+            Usuario admin = new Usuario("Administrador", "admin@tescha.com", "admin123");
+            usuarioDao.insertar(admin);
         }
 
-        // Llenar el Spinner con los roles (asegúrate que roles_array incluye "Administrador")
+        // Spinner roles
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,
                 R.array.roles_array, android.R.layout.simple_spinner_item);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         rolSpinner.setAdapter(adapter);
 
-        // Cambiar el hint dependiendo del rol seleccionado
         rolSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, android.view.View view, int position, long id) {
@@ -72,24 +84,19 @@ public class LoginActivity extends AppCompatActivity {
             }
 
             @Override
-            public void onNothingSelected(AdapterView<?> parent) {
-                // No hacer nada
-            }
+            public void onNothingSelected(AdapterView<?> parent) {}
         });
 
-        // Acción del texto "¿No tienes cuenta? Regístrate"
         registerText.setOnClickListener(v -> {
             Intent intent = new Intent(LoginActivity.this, RegisterActivity.class);
             startActivity(intent);
         });
 
-        // Acción del texto "¿Olvidaste tu contraseña?"
         forgotPassword.setOnClickListener(v -> {
             Intent intent = new Intent(LoginActivity.this, olvidasteActivity.class);
             startActivity(intent);
         });
 
-        // Acción del botón "INICIAR SESIÓN"
         loginButton.setOnClickListener(v -> {
             String rol = rolSpinner.getSelectedItem().toString();
             String input = inputField.getText().toString().trim();
@@ -107,7 +114,7 @@ public class LoginActivity extends AppCompatActivity {
                 return;
             }
 
-            // Login especial para administrador
+            // Login especial administrador hardcoded
             if (rol.equals("Administrador") && input.equals("admin") && password.equals("admin123")) {
                 SharedPreferences.Editor editor = sharedPreferences.edit();
                 editor.putBoolean("logeado", true);
@@ -121,16 +128,21 @@ public class LoginActivity extends AppCompatActivity {
                 return;
             }
 
-            // Login simulado para Usuario y Estudiante (aquí puedes agregar validación real)
-            SharedPreferences.Editor editor = sharedPreferences.edit();
-            editor.putBoolean("logeado", true);
-            editor.putString("rol", rol.toLowerCase());
-            editor.putString("usuario", input);
-            editor.apply();
+            // Validar usuario o estudiante en BD
+            Usuario usuarioBD = usuarioDao.buscarPorIdentificador(input);
+            if (usuarioBD != null && usuarioBD.getPassword().equals(password)) {
+                SharedPreferences.Editor editor = sharedPreferences.edit();
+                editor.putBoolean("logeado", true);
+                editor.putString("rol", rol.toLowerCase());
+                editor.putString("usuario", input);
+                editor.apply();
 
-            Toast.makeText(LoginActivity.this, "Sesión iniciada como " + rol, Toast.LENGTH_SHORT).show();
-            startActivity(new Intent(LoginActivity.this, menuActivity.class));
-            finish();
+                Toast.makeText(LoginActivity.this, "Sesión iniciada como " + rol, Toast.LENGTH_SHORT).show();
+                startActivity(new Intent(LoginActivity.this, menuActivity.class));
+                finish();
+            } else {
+                Toast.makeText(LoginActivity.this, "Credenciales incorrectas", Toast.LENGTH_SHORT).show();
+            }
         });
     }
 }

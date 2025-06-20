@@ -6,7 +6,6 @@ import androidx.room.Query;
 import androidx.room.Update;
 import androidx.room.Delete;
 
-
 import com.example.teschachatbot_f.models.Usuario;
 
 import java.util.List;
@@ -26,7 +25,22 @@ public interface UsuarioDao {
     @Delete
     void eliminar(Usuario usuario);
 
-    // 🔽 Este es el que te falta
     @Query("DELETE FROM usuario")
     void eliminarTodos();
+
+    // Buscar por identificador
+    @Query("SELECT * FROM usuario WHERE identificador = :identificador LIMIT 1")
+    Usuario buscarPorIdentificador(String identificador);
+
+    // Buscar por identificador y rol
+    @Query("SELECT * FROM usuario WHERE identificador = :identificador AND rol = :rol LIMIT 1")
+    Usuario buscarPorIdentificadorYRol(String identificador, String rol);
+
+    // Buscar por ID del backend (opcional)
+    @Query("SELECT * FROM usuario WHERE idBackend = :idBackend LIMIT 1")
+    Usuario buscarPorIdBackend(String idBackend);
+
+    // Limpiar todos los usuarios
+    @Query("DELETE FROM usuario")
+    void limpiarUsuarios();
 }

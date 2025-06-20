@@ -22,12 +22,14 @@
             android:name="com.google.android.geo.API_KEY"
             android:value="@string/Maps_key" />
 
+
         <activity android:name=".LocationInfoActivity" />
         <activity android:name=".menuActivity" />
         <activity android:name=".RegisterActivity" />
         <activity android:name=".ReadFileActivity" />
         <activity android:name=".olvidasteActivity" />
         <activity android:name=".DestinosActivity" />
+
 
 
 
