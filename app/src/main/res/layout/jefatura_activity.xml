@@ -4,7 +4,6 @@
     android:layout_height="match_parent">
 
     <LinearLayout
-        xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
@@ -21,7 +20,7 @@
             android:textColor="#FFFFFF"
             android:layout_marginTop="32dp"
             android:layout_marginBottom="16dp"
-            android:gravity="center_horizontal"/>
+            android:gravity="center_horizontal" />
 
         <TableLayout
             android:layout_width="match_parent"
@@ -30,6 +29,7 @@
             android:background="#333333"
             android:padding="8dp">
 
+            <!-- Encabezado -->
             <TableRow
                 android:background="#FF5722"
                 android:padding="8dp">
@@ -62,163 +62,41 @@
                     android:padding="4dp"/>
             </TableRow>
 
-            <TableRow
-                android:background="#444444"
-                android:padding="8dp">
-                <TextView
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="ING. SISTEMAS COMPUTACIONALES"
-                    android:textColor="#FFFFFF"
-                    android:gravity="center"
-                    android:padding="4dp"/>
-                <TextView
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="9:00 AM A 6:00 PM"
-                    android:textColor="#FFFFFF"
-                    android:gravity="center"
-                    android:padding="4dp"/>
-                <TextView
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="EDIFICIO BICENTENARIO"
-                    android:textColor="#FFFFFF"
-                    android:gravity="center"
-                    android:padding="4dp"/>
+            <!-- Carreras -->
+            <TableRow android:background="#444444" android:padding="8dp">
+                <TextView android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:text="ING. SISTEMAS COMPUTACIONALES" android:textColor="#FFFFFF" android:gravity="center" android:padding="4dp"/>
+                <TextView android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:text="9:00 AM A 6:00 PM" android:textColor="#FFFFFF" android:gravity="center" android:padding="4dp"/>
+                <TextView android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:text="EDIFICIO BICENTENARIO" android:textColor="#FFFFFF" android:gravity="center" android:padding="4dp"/>
             </TableRow>
 
-            <TableRow
-                android:background="#555555"
-                android:padding="8dp">
-                <TextView
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="ING. INFORMATICA"
-                    android:textColor="#FFFFFF"
-                    android:gravity="center"
-                    android:padding="4dp"/>
-                <TextView
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="9:00 AM A 6:00 PM"
-                    android:textColor="#FFFFFF"
-                    android:gravity="center"
-                    android:padding="4dp"/>
-                <TextView
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="EDIFICIO BICENTENARIO"
-                    android:textColor="#FFFFFF"
-                    android:gravity="center"
-                    android:padding="4dp"/>
+            <TableRow android:background="#555555" android:padding="8dp">
+                <TextView android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:text="ING. INFORMATICA" android:textColor="#FFFFFF" android:gravity="center" android:padding="4dp"/>
+                <TextView android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:text="9:00 AM A 6:00 PM" android:textColor="#FFFFFF" android:gravity="center" android:padding="4dp"/>
+                <TextView android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:text="EDIFICIO BICENTENARIO" android:textColor="#FFFFFF" android:gravity="center" android:padding="4dp"/>
             </TableRow>
 
-            <TableRow
-                android:background="#444444"
-                android:padding="8dp">
-                <TextView
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="ING. ADMINISTRACIÓN"
-                    android:textColor="#FFFFFF"
-                    android:gravity="center"
-                    android:padding="4dp"/>
-                <TextView
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="9:00 AM A 6:00 PM"
-                    android:textColor="#FFFFFF"
-                    android:gravity="center"
-                    android:padding="4dp"/>
-                <TextView
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="EDIFICIO BICENTENARIO"
-                    android:textColor="#FFFFFF"
-                    android:gravity="center"
-                    android:padding="4dp"/>
+            <TableRow android:background="#444444" android:padding="8dp">
+                <TextView android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:text="ING. ADMINISTRACIÓN" android:textColor="#FFFFFF" android:gravity="center" android:padding="4dp"/>
+                <TextView android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:text="9:00 AM A 6:00 PM" android:textColor="#FFFFFF" android:gravity="center" android:padding="4dp"/>
+                <TextView android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:text="EDIFICIO BICENTENARIO" android:textColor="#FFFFFF" android:gravity="center" android:padding="4dp"/>
             </TableRow>
 
-            <TableRow
-                android:background="#555555"
-                android:padding="8dp">
-                <TextView
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="ING. INDUSTRIAL"
-                    android:textColor="#FFFFFF"
-                    android:gravity="center"
-                    android:padding="4dp"/>
-                <TextView
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="9:00 AM A 6:00 PM"
-                    android:textColor="#FFFFFF"
-                    android:gravity="center"
-                    android:padding="4dp"/>
-                <TextView
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="EDIFICIO BICENTENARIO"
-                    android:textColor="#FFFFFF"
-                    android:gravity="center"
-                    android:padding="4dp"/>
+            <TableRow android:background="#555555" android:padding="8dp">
+                <TextView android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:text="ING. INDUSTRIAL" android:textColor="#FFFFFF" android:gravity="center" android:padding="4dp"/>
+                <TextView android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:text="9:00 AM A 6:00 PM" android:textColor="#FFFFFF" android:gravity="center" android:padding="4dp"/>
+                <TextView android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:text="EDIFICIO BICENTENARIO" android:textColor="#FFFFFF" android:gravity="center" android:padding="4dp"/>
             </TableRow>
 
-            <TableRow
-                android:background="#444444"
-                android:padding="8dp">
-                <TextView
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="ING. ELECTROMECÁNICA"
-                    android:textColor="#FFFFFF"
-                    android:gravity="center"
-                    android:padding="4dp"/>
-                <TextView
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="9:00 AM A 6:00 PM"
-                    android:textColor="#FFFFFF"
-                    android:gravity="center"
-                    android:padding="4dp"/>
-                <TextView
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="EDIFICIO BICENTENARIO"
-                    android:textColor="#FFFFFF"
-                    android:gravity="center"
-                    android:padding="4dp"/>
+            <TableRow android:background="#444444" android:padding="8dp">
+                <TextView android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:text="ING. ELECTROMECÁNICA" android:textColor="#FFFFFF" android:gravity="center" android:padding="4dp"/>
+                <TextView android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:text="9:00 AM A 6:00 PM" android:textColor="#FFFFFF" android:gravity="center" android:padding="4dp"/>
+                <TextView android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:text="EDIFICIO BICENTENARIO" android:textColor="#FFFFFF" android:gravity="center" android:padding="4dp"/>
             </TableRow>
+
         </TableLayout>
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Esta información está sujeta a cambios y debe ser verificada en la Jefatura de Carrera correspondiente."
-            android:textColor="#AAAAAA"
-            android:textSize="14sp"
-            android:layout_marginTop="16dp"
-            android:gravity="center_horizontal"
-            android:paddingStart="16dp"
-            android:paddingEnd="16dp"
-            android:layout_marginBottom="32dp"/>
+
+
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -230,8 +108,22 @@
             android:layout_marginTop="16dp"
             android:layout_marginBottom="16dp" />
 
+        <fragment
+            android:id="@+id/mapaJefatura"
+            android:name="com.google.android.gms.maps.SupportMapFragment"
+            android:layout_width="match_parent"
+            android:layout_height="300dp"
+            android:layout_marginBottom="24dp" />
+
+        <TextView
+            android:id="@+id/textoJefatura"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text=""
+            android:textColor="#FFFFFF"
+            android:textSize="18sp"
+            android:layout_marginTop="8dp" />
+
     </LinearLayout>
-
-
 
 </androidx.constraintlayout.widget.ConstraintLayout>

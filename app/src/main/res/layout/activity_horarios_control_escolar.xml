@@ -1,94 +1,33 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="#121212"
+    android:padding="16dp">
 
-    <LinearLayout
-        android:orientation="vertical"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:padding="16dp">
+<fragment
+android:id="@+id/mapFragment"
+android:name="com.google.android.gms.maps.SupportMapFragment"
+android:layout_width="match_parent"
+android:layout_height="300dp" />
 
-        <!-- Título -->
-        <TextView
-            android:id="@+id/txtTitulo"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Horarios Control Escolar"
-            android:textAlignment="center"
-            android:textSize="20sp"
-            android:textStyle="bold"
-            android:layout_marginBottom="16dp" />
+<ScrollView
+android:layout_width="match_parent"
+android:layout_height="wrap_content"
+android:layout_marginTop="16dp">
 
-        <!-- Tabla de horarios -->
-        <TableLayout
-            android:id="@+id/tableLayout"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:stretchColumns="*"
-            android:shrinkColumns="*"
-            android:background="#EEE"
-            android:padding="4dp">
-
-            <!-- Encabezados -->
-            <TableRow>
-                <TextView android:text="Carrera" android:textStyle="bold" />
-                <TextView android:text="Horario" android:textStyle="bold" />
-                <TextView android:text="Ubicación" android:textStyle="bold" />
-            </TableRow>
-
-            <!-- Fila 1 -->
-            <TableRow>
-                <TextView android:text="Ing. Sistemas Computacionales" />
-                <TextView android:text="9:00 am a 6:00 pm" />
-                <TextView android:text="Control escolar" />
-            </TableRow>
-
-            <!-- Fila 2 -->
-            <TableRow>
-                <TextView android:text="Ing. Informática" />
-                <TextView android:text="9:00 am a 6:00 pm" />
-                <TextView android:text="Control escolar" />
-            </TableRow>
-
-            <!-- Fila 3 -->
-            <TableRow>
-                <TextView android:text="Ing. Administración" />
-                <TextView android:text="9:00 am a 6:00 pm" />
-                <TextView android:text="Control escolar" />
-            </TableRow>
-
-            <!-- Fila 4 -->
-            <TableRow>
-                <TextView android:text="Ing. Industrial" />
-                <TextView android:text="9:00 am a 6:00 pm" />
-                <TextView android:text="Control escolar" />
-            </TableRow>
-
-            <!-- Fila 5 -->
-            <TableRow>
-                <TextView android:text="Ing. Electromecánica" />
-                <TextView android:text="9:00 am a 6:00 pm" />
-                <TextView android:text="Control escolar" />
-            </TableRow>
-
-        </TableLayout>
-
-        <!-- Texto de ubicación -->
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Ubicación"
-            android:textSize="18sp"
-            android:textStyle="bold"
-            android:layout_marginTop="24dp"
-            android:layout_marginBottom="8dp" />
-
-        <!-- Fragmento de Google Maps -->
-        <fragment
-            android:id="@+id/mapFragment"
-            android:name="com.google.android.gms.maps.SupportMapFragment"
-            android:layout_width="match_parent"
-            android:layout_height="200dp" />
-    </LinearLayout>
+<TextView
+    android:id="@+id/tvInfoVentanillas"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:text="Cargando ventanillas..."
+    android:textSize="16sp"
+    android:textColor="#FFFFFF"
+android:lineSpacingExtra="4dp"
+android:background="@drawable/info_background"
+android:padding="16dp" />
 </ScrollView>
+
+    </LinearLayout>

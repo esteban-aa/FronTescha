@@ -28,6 +28,11 @@
         <activity android:name=".ReadFileActivity" />
         <activity android:name=".olvidasteActivity" />
         <activity android:name=".DestinosActivity" />
+        <activity android:name=".HorariosControlEscolarActivity" />
+        <activity android:name=".JefaturaActivity" />
+        <activity android:name=".HorariosDocentesActivity" />
+
+
 
 
 

@@ -34,12 +34,14 @@ public class LocationInfoActivity extends AppCompatActivity implements OnMapRead
     private double longitud = 0.0;
     private boolean modoEdicion = false;
     private String tipoUsuario = "";
+    private String nombreEdificio = "";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_location_info);
 
+        // Referencias UI
         tvNombreZona = findViewById(R.id.tvNombreZona);
         tvDescripcion = findViewById(R.id.tvDescripcion);
         etNombreZona = findViewById(R.id.etNombreZona);
@@ -47,13 +49,14 @@ public class LocationInfoActivity extends AppCompatActivity implements OnMapRead
         btnEditar = findViewById(R.id.btnEditar);
         btnGuardar = findViewById(R.id.btnGuardarZona);
 
-        // Ocultar botones y campos por defecto
+        // Ocultar botones y campos de edición por defecto
         btnEditar.setVisibility(View.GONE);
         btnGuardar.setVisibility(View.GONE);
         etNombreZona.setVisibility(View.GONE);
         etDescripcion.setVisibility(View.GONE);
 
-        String nombreEdificio = getIntent().getStringExtra("nombreEdificio");
+        // Obtener extras de Intent
+        nombreEdificio = getIntent().getStringExtra("nombreEdificio");
         tipoUsuario = getIntent().getStringExtra("tipoUsuario");
 
         if (tipoUsuario != null) {
@@ -63,7 +66,6 @@ public class LocationInfoActivity extends AppCompatActivity implements OnMapRead
         }
 
         Log.d("LocationInfoActivity", "Tipo usuario recibido: '" + tipoUsuario + "'");
-        Toast.makeText(this, "Tipo usuario: '" + tipoUsuario + "'", Toast.LENGTH_SHORT).show();
 
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
                 .findFragmentById(R.id.mapFragment);
@@ -71,6 +73,7 @@ public class LocationInfoActivity extends AppCompatActivity implements OnMapRead
             mapFragment.getMapAsync(this);
         }
 
+        // Mostrar botón editar solo si es admin
         if (tipoUsuario.equals("admin")) {
             btnEditar.setVisibility(View.VISIBLE);
 
@@ -78,30 +81,36 @@ public class LocationInfoActivity extends AppCompatActivity implements OnMapRead
             btnGuardar.setOnClickListener(v -> guardarCambios());
         }
 
+        // Cargar datos del edificio desde API
         if (nombreEdificio != null && !nombreEdificio.isEmpty()) {
-            ApiService apiService = RetrofitClient.getInstance().create(ApiService.class);
-            apiService.getEdificioPorNombre(nombreEdificio).enqueue(new Callback<Edificio>() {
-                @Override
-                public void onResponse(Call<Edificio> call, Response<Edificio> response) {
-                    if (response.isSuccessful() && response.body() != null) {
-                        Edificio edificio = response.body();
-                        mostrarInfo(edificio);
-                    } else {
-                        Toast.makeText(LocationInfoActivity.this, "Edificio no encontrado", Toast.LENGTH_SHORT).show();
-                    }
-                }
-
-                @Override
-                public void onFailure(Call<Edificio> call, Throwable t) {
-                    Toast.makeText(LocationInfoActivity.this, "Error: " + t.getMessage(), Toast.LENGTH_SHORT).show();
-                }
-            });
+            cargarEdificioPorNombre(nombreEdificio);
         } else {
             Toast.makeText(this, "No se recibió el nombre del edificio", Toast.LENGTH_SHORT).show();
         }
     }
 
+    private void cargarEdificioPorNombre(String nombre) {
+        ApiService apiService = RetrofitClient.getInstance().create(ApiService.class);
+        apiService.getEdificioPorNombre(nombre).enqueue(new Callback<Edificio>() {
+            @Override
+            public void onResponse(Call<Edificio> call, Response<Edificio> response) {
+                if (response.isSuccessful() && response.body() != null) {
+                    Edificio edificio = response.body();
+                    mostrarInfo(edificio);
+                } else {
+                    Toast.makeText(LocationInfoActivity.this, "Edificio no encontrado", Toast.LENGTH_SHORT).show();
+                }
+            }
+
+            @Override
+            public void onFailure(Call<Edificio> call, Throwable t) {
+                Toast.makeText(LocationInfoActivity.this, "Error: " + t.getMessage(), Toast.LENGTH_SHORT).show();
+            }
+        });
+    }
+
     private void mostrarInfo(Edificio edificio) {
+        // Guardar coordenadas para mostrar en mapa
         latitud = edificio.getCoordenadas()[0];
         longitud = edificio.getCoordenadas()[1];
 
@@ -110,6 +119,7 @@ public class LocationInfoActivity extends AppCompatActivity implements OnMapRead
         }
 
         if (tipoUsuario.equals("admin")) {
+            // Mostrar campos edición/lectura según modoEdicion
             tvNombreZona.setVisibility(modoEdicion ? View.GONE : View.VISIBLE);
             tvDescripcion.setVisibility(modoEdicion ? View.GONE : View.VISIBLE);
 
@@ -124,6 +134,7 @@ public class LocationInfoActivity extends AppCompatActivity implements OnMapRead
                 tvDescripcion.setText(edificio.getDescripcion());
             }
         } else {
+            // Usuario normal: solo texto
             tvNombreZona.setVisibility(View.VISIBLE);
             tvDescripcion.setVisibility(View.VISIBLE);
             etNombreZona.setVisibility(View.GONE);
@@ -139,6 +150,7 @@ public class LocationInfoActivity extends AppCompatActivity implements OnMapRead
 
     private void activarModoEdicion(boolean activar) {
         modoEdicion = activar;
+
         btnEditar.setVisibility(activar ? View.GONE : View.VISIBLE);
         btnGuardar.setVisibility(activar ? View.VISIBLE : View.GONE);
 
@@ -158,12 +170,33 @@ public class LocationInfoActivity extends AppCompatActivity implements OnMapRead
             return;
         }
 
-        Toast.makeText(this, "Información guardada correctamente", Toast.LENGTH_SHORT).show();
+        // Actualizar solo nombre y descripción (sin tocar coordenadas)
+        ApiService apiService = RetrofitClient.getInstance().create(ApiService.class);
+        Edificio edificioActualizado = new Edificio();
+        edificioActualizado.setNombre(nuevoNombre);
+        edificioActualizado.setDescripcion(nuevaDescripcion);
+        // Mantener coordenadas viejas
+        edificioActualizado.setCoordenadas(new double[]{latitud, longitud});
 
-        tvNombreZona.setText(nuevoNombre);
-        tvDescripcion.setText(nuevaDescripcion);
+        apiService.actualizarEdificioPorNombre(nombreEdificio, edificioActualizado).enqueue(new Callback<Void>() {
+            @Override
+            public void onResponse(Call<Void> call, Response<Void> response) {
+                if (response.isSuccessful()) {
+                    Toast.makeText(LocationInfoActivity.this, "Información guardada correctamente", Toast.LENGTH_SHORT).show();
+                    // Refrescar pantalla con datos nuevos
+                    nombreEdificio = nuevoNombre; // Actualizar nombre local
+                    activarModoEdicion(false);
+                    cargarEdificioPorNombre(nuevoNombre);
+                } else {
+                    Toast.makeText(LocationInfoActivity.this, "Error al guardar información", Toast.LENGTH_SHORT).show();
+                }
+            }
 
-        activarModoEdicion(false);
+            @Override
+            public void onFailure(Call<Void> call, Throwable t) {
+                Toast.makeText(LocationInfoActivity.this, "Error: " + t.getMessage(), Toast.LENGTH_SHORT).show();
+            }
+        });
     }
 
     @Override
@@ -181,3 +214,4 @@ public class LocationInfoActivity extends AppCompatActivity implements OnMapRead
         mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(ubicacion, 17));
     }
 }
+
